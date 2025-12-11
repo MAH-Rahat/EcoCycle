@@ -18,38 +18,3 @@ EcoCycle is a complete platform designed to incentivise recycling by providing c
 | **Backend** | Node.js, Express.js | Secure, scalable REST API. |
 | **Database** | MongoDB, Mongoose | Flexible, non-relational data store. |
 
-## 🚀 Setup and Run Locally
-
-Follow these steps to get the project running on your local machine:
-
-### 1. Backend Setup
-
-1.  Navigate to the `server/` directory: `cd server`
-2.  Install dependencies: `npm install`
-3.  **Create `.env` file** in the `server/` directory and add your MongoDB connection string:
-    ```
-    MONGO_URI="mongodb+srv://<USERNAME>:<PASSWORD>@<CLUSTER>.mongodb.net/ecocycle-db?retryWrites=true&w=majority"
-    PORT=5000
-    ```
-4.  Start the server:
-    ```bash
-    node server.js
-    ```
-    *(The console must show "MongoDB connection established successfully.")*
-
-### 2. Frontend Setup
-
-1.  Navigate to the `client/` directory in a **new terminal window**: `cd client`
-2.  Install dependencies: `npm install`
-3.  Start the frontend application:
-    ```bash
-    npm run dev
-    ```
-4.  Open your browser to `http://localhost:5173`.
-
-## 🔒 Test Credentials
-
-| Role | Email | Password | Admin Code | Redirect |
-| :--- | :--- | :--- | :--- | :--- |
-| **Citizen** | New User (e.g., test@mail.com) | 123456 | N/A | `/home` |
-| **Admin** | New User (e.g., admin@mail.com) | 123456 | `ECOADMIN` | `/admin-panel` |
