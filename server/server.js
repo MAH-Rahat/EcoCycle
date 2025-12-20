@@ -2,17 +2,23 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
+
+// Route Imports
 import authRoutes from './routes/authRoutes.js';
-import wasteRoutes from './routes/wasteRoutes.js'; // Correct import
+import wasteRoutes from './routes/wasteRoutes.js'; 
+import pickupRoutes from './routes/pickupRoutes.js';
+import campaignRoutes from './routes/campaignRoutes.js'; // NEW IMPORT
+import rewardRoutes from './routes/rewardRoutes.js';
+import analyticsRoutes from './routes/analyticsRoutes.js';
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Database Connection Logic
 const connectDB = async () => {
     try {
-        // Includes SSL fix options
         await mongoose.connect(process.env.MONGO_URI, {
             ssl: true,
             tlsInsecure: true,
@@ -28,9 +34,12 @@ const connectDB = async () => {
 app.use(express.json());
 app.use(cors());
 
-// Define Routes
+// --- Define Routes ---
 app.use('/api/auth', authRoutes);
-app.use('/api/waste', wasteRoutes); // Correct route handler integration
+app.use('/api/waste', wasteRoutes); 
+app.use('/api/pickup', pickupRoutes);
+app.use('/api/campaigns', campaignRoutes);
+app.use('/api/rewards', rewardRoutes); // NEW ROUTE REGISTERED
 
 // Start database connection, then start server
 connectDB().then(() => {
@@ -38,3 +47,6 @@ connectDB().then(() => {
         console.log(`Server is running on port ${PORT}`);
     });
 });
+
+// Analytics Routes
+app.use('/api/analytics', analyticsRoutes);

@@ -136,5 +136,18 @@ router.put('/status/:id', async (req, res) => {
     }
 });
 
+// --- ADDED: Route to fetch waste history for a specific user ---
+// @desc    Get all waste logged by a specific user
+// @route   GET /api/waste/user/:userId
+router.get('/user/:userId', async (req, res) => {
+    try {
+        const { userId } = req.params;
+        const history = await Waste.find({ citizen: userId }).sort({ createdAt: -1 });
+        res.status(200).json(history);
+    } catch (error) {
+        console.error('Fetch User History Error:', error);
+        res.status(500).json({ message: 'Could not fetch waste history.' });
+    }
+});
 
 export default router;

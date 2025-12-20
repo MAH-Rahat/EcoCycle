@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { Mail, Lock, LogIn, UserCheck, Zap } from 'lucide-react'; 
+import { Mail, Lock, LogIn, Zap } from 'lucide-react'; // UserCheck is removed as it was only used for the demo button
 
 // --- SENIOR FIX: Define Helper Component OUTSIDE the main function for stability ---
 const FloatingInputField = ({ icon: Icon, name, type, label, value, onChange, required=false }) => (
@@ -38,17 +38,7 @@ export default function Login() {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleDemoLogin = () => {
-        const demoUser = {
-            _id: 'demo-id-123',
-            name: 'Demo User',
-            email: 'demo@ecocycle.com',
-            role: 'citizen',
-            token: 'fake-jwt-token-for-demo-access'
-        };
-        localStorage.setItem('userInfo', JSON.stringify(demoUser));
-        navigate('/home'); 
-    };
+    // --- REMOVED: handleDemoLogin function is no longer needed ---
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -122,14 +112,7 @@ export default function Login() {
                         <span>Sign In</span>
                     </button>
                     
-                    <button
-                        type="button"
-                        onClick={handleDemoLogin}
-                        className="w-full flex items-center justify-center space-x-2 bg-blue-600 text-white font-medium py-3 rounded-xl 
-                                   hover:bg-blue-700 transition-all duration-300 shadow-md shadow-blue-900/30 text-base transform hover:scale-[1.01]">
-                        <UserCheck className="h-5 w-5"/>
-                        <span>Demo Access (Quick Test)</span>
-                    </button>
+                    {/* --- REMOVED: Demo Button HTML block is removed --- */}
                 </form>
 
                 <div className="text-center mt-8 pt-4 border-t border-white/10">
