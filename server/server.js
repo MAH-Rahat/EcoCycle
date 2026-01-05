@@ -1,15 +1,21 @@
+// server.js
+
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
 
-// Route Imports
+// Import Routes
 import authRoutes from './routes/authRoutes.js';
 import wasteRoutes from './routes/wasteRoutes.js'; 
 import pickupRoutes from './routes/pickupRoutes.js';
-import campaignRoutes from './routes/campaignRoutes.js'; // NEW IMPORT
+import campaignRoutes from './routes/campaignRoutes.js'; 
 import rewardRoutes from './routes/rewardRoutes.js';
 import analyticsRoutes from './routes/analyticsRoutes.js';
+
+// Import the new routes
+import collectionReportRoutes from './routes/collectionReportRoutes.js';  // NEW
+import qrCodeRoutes from './routes/qrCodeRoutes.js';  // NEW
 
 dotenv.config();
 
@@ -34,12 +40,16 @@ const connectDB = async () => {
 app.use(express.json());
 app.use(cors());
 
-// --- Define Routes ---
+// Define Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/waste', wasteRoutes); 
 app.use('/api/pickup', pickupRoutes);
 app.use('/api/campaigns', campaignRoutes);
-app.use('/api/rewards', rewardRoutes); // NEW ROUTE REGISTERED
+app.use('/api/rewards', rewardRoutes); 
+
+// Register the new routes
+app.use('/api/collection-report', collectionReportRoutes);  // NEW Route
+app.use('/api/qrcode', qrCodeRoutes);  // NEW Route
 
 // Start database connection, then start server
 connectDB().then(() => {
