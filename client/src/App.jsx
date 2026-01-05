@@ -5,12 +5,11 @@ import Home from './pages/Home.jsx';
 import LogWaste from './pages/LogWaste.jsx'; 
 import AdminDashboard from './pages/AdminDashboard.jsx'; 
 import AdminWasteManager from './pages/AdminWasteManager.jsx'; 
-import MyActivity from './pages/MyActivity';
+import MyActivity from './pages/MyActivity.jsx'; 
 import AdminCampaigns from './pages/AdminCampaigns.jsx'; 
 import AdminRewards from './pages/AdminRewards.jsx'; 
-
-// --- NEW IMPORT ---
 import AdminAnalytics from './pages/AdminAnalytics.jsx'; 
+import UserManager from './pages/UserManager.jsx'; 
 
 function App() {
   return (
@@ -23,14 +22,13 @@ function App() {
         <Route path="/log-waste" element={<LogWaste />} /> 
         <Route path="/my-activity" element={<MyActivity />} />
 
-        {/* Admin Routes */}
+        {/* Admin Management */}
         <Route path="/admin-panel" element={<AdminDashboard />} /> 
         <Route path="/admin/waste" element={<AdminWasteManager />} /> 
         <Route path="/admin/campaigns" element={<AdminCampaigns />} />
         <Route path="/admin/rewards" element={<AdminRewards />} />
-        
-        {/* --- NEW ANALYTICS ROUTE --- */}
         <Route path="/admin/analytics" element={<AdminAnalytics />} />
+        <Route path="/admin/users" element={<UserManager />} />
       </Routes>
     </BrowserRouter>
   );

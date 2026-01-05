@@ -57,8 +57,6 @@ export default function AdminDashboard() {
 
     return (
         <div className="min-h-screen bg-slate-50 flex overflow-hidden font-sans">
-            
-            {/* --- SIDEBAR --- */}
             <aside className="w-64 bg-slate-900 text-slate-300 flex flex-col shrink-0">
                 <div className="p-6">
                     <div className="flex items-center gap-3 text-white mb-10">
@@ -76,6 +74,7 @@ export default function AdminDashboard() {
                         <button onClick={() => navigate('/admin/analytics')} className="w-full flex items-center gap-3 px-4 py-3 hover:bg-slate-800 rounded-xl transition">
                             <BarChart3 size={18} /> <span className="text-sm font-bold">Analytics</span>
                         </button>
+                        {/* SIDEBAR USER MANAGER LINK */}
                         <button onClick={() => navigate('/admin/users')} className="w-full flex items-center gap-3 px-4 py-3 hover:bg-slate-800 rounded-xl transition">
                             <User size={18} /> <span className="text-sm font-bold">User Manager</span>
                         </button>
@@ -89,10 +88,7 @@ export default function AdminDashboard() {
                 </div>
             </aside>
 
-            {/* --- MAIN CONTENT AREA --- */}
             <main className="flex-1 overflow-y-auto relative">
-                
-                {/* --- TOP BAR --- */}
                 <header className="sticky top-0 z-10 bg-slate-50/80 backdrop-blur-md border-b border-slate-200 px-8 py-4 flex justify-between items-center">
                     <div>
                         <h2 className="text-xs font-black text-slate-400 uppercase tracking-widest">Admin Dashboard</h2>
@@ -110,8 +106,6 @@ export default function AdminDashboard() {
                 </header>
 
                 <div className="p-8 max-w-6xl mx-auto">
-                    
-                    {/* --- STAT GLANCE --- */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
                         <div className="bg-white p-6 rounded-3xl border border-slate-100 flex items-center gap-4">
                             <div className="bg-emerald-50 text-emerald-600 p-3 rounded-2xl"><Package size={24}/></div>
@@ -138,7 +132,6 @@ export default function AdminDashboard() {
                             link="/admin/waste" 
                             badge="Active"
                         />
-                        
                         <ControlCard 
                             icon={Megaphone} 
                             title="Awareness Hub" 
@@ -146,7 +139,6 @@ export default function AdminDashboard() {
                             color="bg-orange-500"
                             link="/admin/campaigns"
                         />
-
                         <ControlCard 
                             icon={Gift} 
                             title="Rewards Engine" 
@@ -154,7 +146,6 @@ export default function AdminDashboard() {
                             color="bg-purple-500"
                             link="/admin/rewards"
                         />
-
                         <ControlCard 
                             icon={BarChart3} 
                             title="Intelligence" 
@@ -162,15 +153,14 @@ export default function AdminDashboard() {
                             color="bg-blue-500"
                             link="/admin/analytics"
                         />
-
+                        {/* ACCESS CONTROL CARD */}
                         <ControlCard 
                             icon={User} 
                             title="Access Control" 
-                            description="Moderate user accounts and system permissions." 
+                            description="View registered citizens and manage permissions." 
                             color="bg-slate-700"
                             link="/admin/users"
                         />
-
                         <ControlCard 
                             icon={Settings} 
                             title="Maintenance" 
